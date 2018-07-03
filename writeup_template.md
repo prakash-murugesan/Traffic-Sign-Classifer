@@ -45,15 +45,17 @@ You're reading it! and here is a link to my [project code](https://github.com/ud
 I used the pandas library to calculate summary statistics of the traffic
 signs data set:
 
-* The size of training set is ?
-* The size of the validation set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
+
+Number of training examples = 34799
+Number of validation examples = 4410
+Number of testing examples = 12630
+Image data shape = (32, 32, 3)
+Number of classes = 43
 
 #### 2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. It is a bar chart showing how the data: 
+
 
 ![alt text][image1]
 
@@ -61,17 +63,16 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 #### 1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
 
-As a first step, I decided to convert the images to grayscale because ...
+As a first step, I decided to convert the images to grayscale however I read the scientific paper Yann LeCun used and noticed that they transformed the images to the YUV space. However, with further exploration I realized that using 3 1x1 convolutions allows the net to learn it's own color space transform that works the best. So I left the data in the color space and used the 3 1x1 convolutions and it gave a huge improvement in the data. 
 
-Here is an example of a traffic sign image before and after grayscaling.
 
 ![alt text][image2]
 
-As a last step, I normalized the image data because ...
+I normalized the image data because it allowed the data to converge faster
 
-I decided to generate additional data because ... 
+I decided to generate additional data because the classes were skewed. It might reflect the natural occurence of the signs, such as a stop sign being more common than say "falling rocks". However, what this leads to is the classifier being biased to the more common signs. If it was faced with two choices and it was unsure, it would chose the sign it has seen more often. So to counteract this bias i created more data by jittering the images. 
 
-To add more data to the the data set, I used the following techniques because ... 
+To add more data to the the data set, I used opencv's function cv2.warpAffine to transform, shear, and rotate the images. I initially tried to have around 2000 examples for each class. However, augmenting the image took a lot of time and with time considerations, I put the threshold to 1000. The data set may still be slightly skewed but not to the extent of the original. 
 
 Here is an example of an original image and an augmented image:
 
@@ -115,6 +116,8 @@ If an iterative approach was chosen:
 * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
 * Which parameters were tuned? How were they adjusted and why?
 * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+
+I began by reading the paper by Yann LeCun for inspiration on the network architecture. However, my curiosity took over and I began systematically experimenting with different net sizes. 
 
 If a well known architecture was chosen:
 * What architecture was chosen?
