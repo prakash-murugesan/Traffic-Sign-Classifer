@@ -117,5 +117,5 @@ The model is 100% sure on the 3 out of the 5 models and gets them right. It is 9
 
 However, the biggest issue seems to be the sign that it actually ends up getting wrong. The model is very confident, 93% of the empty no vehicles sign being a no entry sign. The correct answer appears only in the 5th position with a rounded confidence of 0%. The model, I think, puts a bigger emphasis on the color band around these signs. The 5 softmax images all have bands around the edges and the second option isn't even circular! So perhaps, a better explanation can be arrived from checking out the intermediate convolution visualizations for this image. For now, I believe the reason why it does so poorly with this example is the relative similarity to the "no entry" sign compounded with the fact that the occurence of the "no entry" sign is higher than the "no vehicles" sign. The skewed data set may be at play here. While, it is a problem that could have been fixed early on, it seems my gamble for the short term gain of higher test/validation accuracy didn't translate so well to real world data. 
 
-![Softmax Probabilities][]
+![Softmax Probabilities](https://github.com/prakash-murugesan/Traffic-Sign-Classifer/blob/master/softmax.PNG)
 
