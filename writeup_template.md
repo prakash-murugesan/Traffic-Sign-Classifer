@@ -55,7 +55,7 @@ Number of classes = 43
 Here is an exploratory visualization of the data set. It is a bar chart showing how the data: 
 
 
-![Classes][image1]
+![Classes](https://github.com/prakash-murugesan/Traffic-Sign-Classifer/blob/master/training%20set%20distribution.png)
 
 ### Design and Test a Model Architecture
 
@@ -64,15 +64,14 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 As a first step, I decided to convert the images to grayscale however I read the scientific paper Yann LeCun used and noticed that they transformed the images to the YUV space. However, with further exploration I realized that using 3 1x1 convolutions allows the net to learn it's own color space transform that works the best. So I left the data in the color space and used the 3 1x1 convolutions and it gave a huge improvement in the validation accuracy 
 
 
-![Data set example][image2]
-
 I normalized the image data because it allowed the data to converge faster. Here's an image after normalization..be warned its spooky!
 
-![Normalized boogeyman][]
+![Normalized boogeyman](https://github.com/prakash-murugesan/Traffic-Sign-Classifer/blob/master/traffic%20sign%20classifier%20of%20your%20nightmares.png)
 
 I decided to generate additional data because the classes were skewed. It might reflect the natural occurence of the signs, such as a stop sign being more common than say "falling rocks". However, what this leads to is the classifier being biased to the more common signs. If it was faced with two choices and it was unsure, it would chose the sign it has seen more often. So to counteract this bias i created more data by jittering the images. 
 
 To add more data to the the data set, I used opencv's function cv2.warpAffine to transform, shear, and rotate the images. I initially tried to have around 2000 examples for each class. However, augmenting the image took a lot of time and with time considerations, I put the threshold to 1000. The data set may still be slightly skewed but not to the extent of the original. 
+![updated data](https://github.com/prakash-murugesan/Traffic-Sign-Classifer/blob/master/updated%20distribution.png)
 
 However, what I noticed was that my validation accuracy had dropped to 91.7 % but my test accuracy was actually better than the validation accuracy at 93%! Perhaps, this was because I was jittering the images too much. With time considerations and the fact that the model performed well without augmented data I decided to discard that approach.  
 
