@@ -79,7 +79,7 @@ However, what I noticed was that my validation accuracy had dropped to 91.7 % bu
 #### 2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
 My final model consisted of the following layers:
-![CNN Model][CNN model.PNG]
+![CNN Model](https://github.com/prakash-murugesan/Traffic-Sign-Classifer/blob/master/CNN%20model.PNG)
 
 I began with the LeNet model, however through various online research and through my own curiosity I kept tweaking it over a weekend to arrive at what I think is somewhat an efficient way. I tried different forms and finally settled down to the "long-thin" model as the way i describe it. I used 3x3 convolutions and doubled the number of filters for each layer starting from 16 to 128. Finally I connected it to two fully connected layers of 120 and 83, ultimately with 43 outputs representing the 43 unique classes we are in search of. 
 
@@ -102,10 +102,9 @@ I heavily used dropouts between layers, I hypothesize that being the reason why 
 
 #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
-Here are five German traffic signs that I found on the web:
+Here are the Six German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![1.](https://github.com/prakash-murugesan/Traffic-Sign-Classifer/blob/master/test_images/1.png)![2.](https://github.com/prakash-murugesan/Traffic-Sign-Classifer/blob/master/test_images/2.png) ![3.](https://github.com/prakash-murugesan/Traffic-Sign-Classifer/blob/master/test_images/3.png) ![4.](https://github.com/prakash-murugesan/Traffic-Sign-Classifer/blob/master/test_images/4.png) ![5.](https://github.com/prakash-murugesan/Traffic-Sign-Classifer/blob/master/test_images/5.png) ![6.](https://github.com/prakash-murugesan/Traffic-Sign-Classifer/blob/master/test_images/6.png)
 
 I went for images generally spread around the data set. Picking some from the skewed classes to see if it made a difference. I also chose signs that looked relatively similar to the others to see if it may confuse the image recognizer. 
 
@@ -117,7 +116,7 @@ The model was able to correctly guess 4 of the 5 traffic signs, which gives an a
 
 The model is 100% sure on the 3 out of the 5 models and gets them right. It is 98% sure on the triangle shaped sign and just loses 2% to another relatively similar one. 
 
-However, the biggest issue seems to be the sign that it actually ends up getting wrong. The model is very confident, 93% of the empty no vehicles sign being a no entry sign. The correct answer appears only in the 5th position with a rounded confidence of 0%. The model, I think, puts a bigger emphasis on the color band around these signs. The 5 softmax images all have bands around the edges and the second option isn't even circular! So perhaps, a better explanation can be arrived from checking out the intermediate convolution visualizations for this image. 
+However, the biggest issue seems to be the sign that it actually ends up getting wrong. The model is very confident, 93% of the empty no vehicles sign being a no entry sign. The correct answer appears only in the 5th position with a rounded confidence of 0%. The model, I think, puts a bigger emphasis on the color band around these signs. The 5 softmax images all have bands around the edges and the second option isn't even circular! So perhaps, a better explanation can be arrived from checking out the intermediate convolution visualizations for this image. For now, I believe the reason why it does so poorly with this example is the relative similarity to the "no entry" sign compounded with the fact that the occurence of the "no entry" sign is higher than the "no vehicles" sign. The skewed data set may be at play here. While, it is a problem that could have been fixed early on, it seems my gamble for the short term gain of higher test/validation accuracy didn't translate so well to real world data. 
 
 ![Softmax Probabilities][]
 
