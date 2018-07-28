@@ -88,6 +88,8 @@ I began with the LeNet model, however through various online research and throug
 To train the model, I went with the starting base parameters mostly. They seemed to yield good enough results. However, I lowered my learning rate to 0.00075 as I found that the model started bouncing around a local minima quite early in the training. I had the time to go for a 100 epochs and wanted to see some more progression. On the other hand, counter intuitively I found that as I increased the batch size to 512 the validation accuracy dropped. So I went back to 128 and trained the Neural net. 
 
 I used the adam optimizer at it offered the most efficient results. As noted by the following image, the optimizer provides the best results. 
+
+
 ![Optimizer](https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2017/05/Comparison-of-Adam-to-Other-Optimization-Algorithms-Training-a-Multilayer-Perceptron.png)
 
 Furthermore, Adam combines the benefits of both RMS-prop and AdaGrad. 
