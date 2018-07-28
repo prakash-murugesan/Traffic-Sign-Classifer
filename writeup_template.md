@@ -87,9 +87,14 @@ I began with the LeNet model, however through various online research and throug
 
 To train the model, I went with the starting base parameters mostly. They seemed to yield good enough results. However, I lowered my learning rate to 0.00075 as I found that the model started bouncing around a local minima quite early in the training. I had the time to go for a 100 epochs and wanted to see some more progression. On the other hand, counter intuitively I found that as I increased the batch size to 512 the validation accuracy dropped. So I went back to 128 and trained the Neural net. 
 
+I used the adam optimizer at it offered the most efficient results. As noted by the following image, the optimizer provides the best results. 
+![Optimizer](https://3qeqpr26caki16dnhd19sv6by6v-wpengine.netdna-ssl.com/wp-content/uploads/2017/05/Comparison-of-Adam-to-Other-Optimization-Algorithms-Training-a-Multilayer-Perceptron.png)
+
+Furthermore, Adam combines the benefits of both RMS-prop and AdaGrad. 
+
 #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
-My final model had a validation set accuracy of 97.8% and a test set accuracy of 96.7%. I believe I was able to reach a good test set accuracy levels that closely matched the validation accuracy by the heavy use of dropouts between the layers. This allowed the model to generalize better. 
+My final model had a test set accuracy of 99.8%, a validation set accuracy of 97.8% and a test set accuracy of 96.7%. I believe I was able to reach a good test set accuracy levels that closely matched the validation accuracy by the heavy use of dropouts between the layers. This allowed the model to generalize better. 
 
 My approach was an iterative one as all things should be. I hoped to get better with each try, although I must admit that some models in the middle had better performance. But my experience of continuing to tweak the model helped me develop a better intuition of how these neural nets worked. 
 
